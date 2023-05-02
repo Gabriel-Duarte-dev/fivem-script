@@ -1,4 +1,5 @@
 const BACKEND_URL = "https://sks_spotify/action";
+let showingToast = false;
 
 $("#shutdownbutton").click(function () {
   $.post(
@@ -103,7 +104,18 @@ window.addEventListener("message", function (event) {
       $("#main").hide();
       break;
     case "changetextv":
-      document.getElementById("testrecv").innerHTML = event.data.text;
+      // document.getElementById("testrecv").innerHTML = event.data.text;
+      $("#volue_value").html(event.data.text);
+      $("#volume_toast").animate({ right: "57px" });
+      const timer = null;
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
+      timer = setTimeout(() => {
+        $("#volume_toast").animate({ right: "-57px" });
+        showingToast = false;
+      }, 4000);
       break;
     case "changetextl":
       const status = event.data.text;
@@ -126,8 +138,10 @@ function getTime(totaltime, timeplayed) {
     if (secondsToHms(timeplayed) > secondsToHms(totaltime)) {
       timeplayed = timeplayed - 1;
     }
-    document.getElementById("testtime").innerHTML =
-      secondsToHms(timeplayed) + " / " + secondsToHms(totaltime);
+    $("#currentTime").html(secondsToHms(timeplayed));
+    $("#totalTime").html(secondsToHms(totaltime));
+    $("input[type=range]").attr("max", totaltime);
+    $("input[type=range]").val(timeplayed);
   } else {
     document.getElementById("testtime").innerHTML = "0:00 / 0:00";
   }
