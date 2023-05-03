@@ -246,7 +246,7 @@ function showTime() {
 }
 
 $(document).ready(function () {
-  //   $("#main").hide();
+  $("#main").hide();
   $("#pause").hide();
   document.onkeyup = function (data) {
     if (data.which == 27) {

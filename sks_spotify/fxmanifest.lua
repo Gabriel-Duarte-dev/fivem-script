@@ -11,10 +11,9 @@ client_scripts {
 
 files {
 	'nui/index.html',
-	'nui/script.js',
-	'nui/*.png',
-	'nui/radio.png',
-	'nui/main.css',
+	'nui/scripts/script.js',
+	'nui/assets/*.png',
+	'nui/styles/main.css',
 }
 
 server_scripts {
