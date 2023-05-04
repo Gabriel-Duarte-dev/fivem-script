@@ -1,5 +1,4 @@
 const BACKEND_URL = "https://sks_spotify/action";
-let showingToast = false;
 
 $("#shutdownbutton").click(function () {
   $.post(
@@ -79,10 +78,10 @@ $("#forward").click(function () {
   );
 });
 
-var vidname = "Name not Found";
+let vidname = "Name not Found";
 
 $("#inputok").click(function () {
-  var url = document.getElementById("linkinput").value;
+  let url = $("#linkinput").val();
   $.post(
     BACKEND_URL,
     JSON.stringify({
@@ -91,7 +90,7 @@ $("#inputok").click(function () {
     })
   );
   getNameFile(url);
-  document.getElementById("linkinput").value = "";
+  $("#linkinput").val("");
 });
 
 window.addEventListener("message", function (event) {
@@ -104,8 +103,7 @@ window.addEventListener("message", function (event) {
       $("#main").hide();
       break;
     case "changetextv":
-      // document.getElementById("testrecv").innerHTML = event.data.text;
-      $("#volue_value").html(event.data.text);
+      $("#volume_value").html(event.data.text);
       $("#volume_toast").animate({ right: "57px" });
       const timer = null;
       if (timer) {
@@ -114,7 +112,6 @@ window.addEventListener("message", function (event) {
       }
       timer = setTimeout(() => {
         $("#volume_toast").animate({ right: "-57px" });
-        showingToast = false;
       }, 4000);
       break;
     case "changetextl":
@@ -143,7 +140,8 @@ function getTime(totaltime, timeplayed) {
     $("input[type=range]").attr("max", totaltime);
     $("input[type=range]").val(timeplayed);
   } else {
-    document.getElementById("testtime").innerHTML = "0:00 / 0:00";
+    $("#currentTime").html("0:00");
+    $("#totalTime").html("0:00");
   }
 }
 
@@ -168,10 +166,11 @@ function secondsToHms(d) {
 function getNameFile(url) {
   if (url == undefined) {
     vidname = "NENHUMA MÚSICA ESTÁ TOCANDO";
-    document.getElementById("testrec").innerHTML =
+    $("#testrec").html(
       "<b>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</b><marquee direction = 'left'> " +
-      vidname +
-      "</marquee>";
+        vidname +
+        "</marquee>"
+    );
   } else {
     $.getJSON(
       "https://noembed.com/embed?url=",
@@ -196,10 +195,11 @@ function whenDone(url) {
       vidname = "MÚSICA NÃO SUPORTADA, TENTE OUTRA";
     }
   }
-  document.getElementById("testrec").innerHTML =
+  $("#testrec").html(
     "<b>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</b><marquee direction = 'left'> " +
-    vidname +
-    "</marquee>";
+      vidname +
+      "</marquee>"
+  );
 }
 
 function GetFilename(url) {
@@ -238,8 +238,7 @@ function showTime() {
   } else {
     doispontos = false;
   }
-  document.getElementById("MyClockDisplay").innerText = time;
-  document.getElementById("MyClockDisplay").textContent = time;
+  $("#MyClockDisplay").text(time);
   if ($("#main").is(":visible")) {
     setTimeout(showTime, 1000);
   }
