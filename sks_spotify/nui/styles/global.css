@@ -1,0 +1,153 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+    url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+    url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: Roboto;
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+
+.body_phone::-webkit-scrollbar {
+  width: 5px;               /* width of the entire scrollbar */
+}
+
+.body_phone::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
+}
+
+.body_phone::-webkit-scrollbar-thumb {
+  background-color: rgb(185, 185, 185);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid #888;  /* creates padding around scroll thumb */
+}
+
+main .body_phone {
+  width: 21.25rem;
+  height: 43.75rem;
+  padding: 0 0.625rem 0.625rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1.875rem;
+  background-image: linear-gradient(to bottom, #888888, #646464, #434343, #242424, #000000);
+  background-size: cover;
+  background-position: center center;
+  border: 8px solid #000;
+  box-shadow: inset 5px 5px 10px #5b5b5b,
+            inset -5px -5px 10px #7b7b7b;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.camera-clock_container {
+  position: fixed;
+  width: 21.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 50.6%;
+  transform: translateX(-50%);
+  width: 97%;
+  height: 98%;
+  background: #141414;
+  border-top-left-radius: 1.25rem;
+  border-top-right-radius: 1.25rem;
+}
+
+.camera_container {
+  width: 9.375rem;
+  height: 2.1875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  z-index: 3;
+}
+
+.camera_container .camera {
+  width: 0.9375rem;
+  height: 0.9375rem;
+  border: 2px solid rgb(180, 180, 180);
+  background: #888;
+  border-radius: 50%;
+}
+
+.camera_container .sound {
+  width: 60%;
+  height: 0.625rem;
+  border: 2px solid rgb(180, 180, 180);
+  background: #888;
+  border-radius: 50px;
+}
+
+.clock_container {
+  position: absolute;
+  right: 0.625rem;
+}
+
+.clock_container .clock_value {
+  color: #EFEFEF;
+  font-size: 0.75rem;
+}
+
+.body_phone header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.625rem;
+}

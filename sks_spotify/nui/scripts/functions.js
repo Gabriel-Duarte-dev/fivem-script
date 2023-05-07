@@ -1,97 +1,4 @@
-const BACKEND_URL = "https://sks_spotify/action";
-
-$("#shutdownbutton").click(function () {
-  $.post(
-    BACKEND_URL,
-    JSON.stringify({
-      action: "exit",
-    })
-  );
-});
-
-$("#volumedown").click(function () {
-  $.post(
-    BACKEND_URL,
-    JSON.stringify({
-      action: "volumedown",
-    })
-  );
-});
-
-$("#volumeup").click(function () {
-  $.post(
-    BACKEND_URL,
-    JSON.stringify({
-      action: "volumeup",
-    })
-  );
-});
-
-$("#play").click(function () {
-  $.post(
-    BACKEND_URL,
-    JSON.stringify({
-      action: "play",
-    })
-  );
-
-  $(this).hide();
-  $("#pause").show();
-});
-
-$("#pause").click(function () {
-  $.post(
-    BACKEND_URL,
-    JSON.stringify({
-      action: "pause",
-    })
-  );
-
-  $(this).hide();
-  $("#play").show();
-});
-
-$("#loop").click(function () {
-  $.post(
-    BACKEND_URL,
-    JSON.stringify({
-      action: "loop",
-    })
-  );
-});
-
-$("#back").click(function () {
-  $.post(
-    BACKEND_URL,
-    JSON.stringify({
-      action: "back",
-    })
-  );
-});
-
-$("#forward").click(function () {
-  $.post(
-    BACKEND_URL,
-    JSON.stringify({
-      action: "forward",
-    })
-  );
-});
-
 let vidname = "Name not Found";
-
-$("#inputok").click(function () {
-  let url = $("#linkinput").val();
-  $.post(
-    BACKEND_URL,
-    JSON.stringify({
-      action: "seturl",
-      link: url,
-    })
-  );
-  getNameFile(url);
-  $("#linkinput").val("");
-});
 
 window.addEventListener("message", function (event) {
   switch (event.data.action) {
@@ -105,7 +12,7 @@ window.addEventListener("message", function (event) {
     case "changetextv":
       $("#volume_value").html(event.data.text);
       $("#volume_toast").animate({ right: "57px" });
-      const timer = null;
+      let timer = null;
       if (timer) {
         clearTimeout(timer);
         timer = null;
@@ -244,17 +151,11 @@ function showTime() {
   }
 }
 
-$(document).ready(function () {
-  $("#main").hide();
-  $("#pause").hide();
-  document.onkeyup = function (data) {
-    if (data.which == 27) {
-      $.post(
-        BACKEND_URL,
-        JSON.stringify({
-          action: "exit",
-        })
-      );
-    }
-  };
+showTime();
+
+$("#button").click(() => {
+  $(".search_bar-container").css("display", "none");
+  $("#home_page").css("display", "none");
+  $("#phone_content").toggleClass("music_page");
+  $("#music_page").css("display", "block");
 });
