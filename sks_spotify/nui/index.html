@@ -9,13 +9,13 @@
   <link rel="stylesheet" href="styles/global.css">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/musicPage.css">
-  <title>Spotfy</title>
+  <title>Spotify</title>
 </head>
 <body id="main">
   <main>
     <div id="phone_content" class="body_phone">
       <div id="camera_clock" class="camera-clock_container"></div>
-      <header>
+      <header id="header">
         <div class="search_bar-container">
           <button class="button_search" id="inputok">
             <img src="assets/search.png" class="search_icon" alt="" />
@@ -23,25 +23,61 @@
           <input type="text" placeholder="Buscar..." class="search_bar" id="linkinput"></input>
         </div>
       </header>
-      <div id="home_page" class="home_content">
-        <h1 class="welcome_title">
-          Bem vindo cidadão
-        </h1>
-        <hr class="divider" />
-        <h2 class="playlist_title">Mais tocadas 2023</h2>
-        <div id="slide_wrapper" class="carousel_container">
-          <ul id="slides" class="slider">
-          </ul>
+      <div id="wrapperContainer" class="wrapper">
+        <div id="home_page" class="home_content">
+          <h1 class="welcome_title">
+            Bem vindo cidadão
+          </h1>
+          <hr class="divider" />
+          <h2 class="playlist_title">Mais tocadas 2023</h2>
+          <div id="slide_wrapper" class="carousel_container">
+            <button class="button prev"><</button>
+            <button class="button next">></button>
+            <ul id="slides" class="slider">
+            </ul>
+          </div>
+          <hr class="divider" />
+          <h2 class="playlist_title">Melhores de todos os tempos</h2>
+          <div id="slide_wrapper" class="carousel_container">
+            <button class="button prev prev2"><</button>
+            <button class="button next next2">></button>
+            <ul id="slides" class="slider2">
+            </ul>
+          </div>
+          <hr class="divider" />
+          <!-- <div class="created_playlists_container">
+            <h2 class="playlist_title">
+              Suas playlists
+            </h2>
+            <div class="carousel_container">
+              <button class="button prev prev3"><</button>
+              <button class="button next next3">></button>
+              <ul id="slides" class="slider3">
+                <li>
+                  <img class="playlist_cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPYvs5arsp3PA8-XCi7bsP-Ms1eiikfBZzvQ&usqp=CAU" alt="" draggable="false" />
+                  <span>title</span>
+                </li>
+              </ul>
+            </div>
+          </div> -->
+          <div id="listening_music_container" class="listening_music_container">
+            <div class="music_info">
+              <img id="cover_img-music" class="cover_img-music" src="" alt="" />
+              <div class="music_titles">
+                <span id="listening_music_title"></span>
+                <span id="listening_music_author"></span>
+              </div>
+            </div>
+            <img id="miniplayer_play" src="assets/play.png" class="play_button" alt="" />
+            <img id="miniplayer_pause" src="assets/pause.png" class="play_button" alt="" />
+          </div>
         </div>
-        <hr class="divider" />
-        <h2 class="playlist_title">Mais tocadas 2023</h2>
-        <div id="slide_wrapper" class="carousel_container">
-          <ul id="slides" class="slider">
-          </ul>
-        </div>
-        <hr class="divider" />
       </div>
-      <!-- <div id="music_page" class="selected_music-content">
+      <div id="music_page" class="selected_music-content">
+        <span id="playingBy" class="playing_by"></span>
+        <button id="buttonBack" class="button_back" onclick="hideMusicDetails('home_page')">
+          <img src="assets/arrow_down.svg" alt="ícone de seta para baixo" />
+        </button>
         <div id="volume_toast" class="volume_toast">
           <span id="volume_value" class="volume_value">
           </span>
@@ -55,7 +91,7 @@
           </button>
         </div>
         <picture class="banner">
-          <img src="assets/logo-slash.png" class="logo-slash_bg" alt="" />
+          <img id="musicBanner" src="assets/logo-slash.png" class="logo-slash_bg" alt="" />
         </picture>
         <span class="music_title" id="testrec"></span>
         <div class="volume_range">
@@ -82,10 +118,7 @@
             <img id="loop" src="assets/loop.png" class="controll-loop" alt="" />
           </picture>
         </div>
-      </div> -->
-      <!-- <button id="button">
-        teste de transição
-      </button> -->
+      </div>
     </div>
   </main>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>

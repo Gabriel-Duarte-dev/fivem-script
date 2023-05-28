@@ -1,16 +1,28 @@
-main .music_page {
+.selected_music-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
+  margin-top: 2.5rem;
+  height: calc(100% - 2.5rem);
+  width: calc(100% - 1.25rem);
+  z-index: 2;
+  position: absolute;
+  top: 650px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.selected_music-content {
-  display: none;
-  width: 100%;
+.selected_music-content .playing_by {
+  text-align: center;
+  color: #d3d3d3;
+  font-size: 0.75rem;
 }
 
 .button_back {
   position: absolute;
-  top: 1.875rem;
-  left: 1.25rem;
+  top: 0;
+  left: 0.3125rem;
   background: none;
   outline: none;
   border: none;
@@ -18,7 +30,11 @@ main .music_page {
   transition: 0.3s;
 }
 .button_back:hover {
-  transform: translateX(-3px);
+  transform: translateY(3px);
+}
+.button_back img {
+  width: 16px;
+  height: 16px;
 }
 
 .volume_toast {
@@ -44,9 +60,9 @@ main .music_page {
   gap: 0.9375rem;
   height: 327.59px;
   position: absolute;
-  left: 0.3125rem;
+  left: -0.4375rem;
   top: 50%;
-  transform: translateY(-66%);
+  transform: translateY(-92%);
 }
 
 .volume_controlls .volume_button {
@@ -65,11 +81,16 @@ main .music_page {
 }
 
 .body_phone .banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 90%;
+  min-height: 17.125rem;
 }
 
 .banner .logo-slash_bg {
   width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 5px;
 }

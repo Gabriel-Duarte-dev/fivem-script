@@ -34,9 +34,34 @@ header .search_bar-container {
   background: #EFEFEF;
 }
 
+.wrapper {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.wrapper::-webkit-scrollbar {
+  width: 5px;               /* width of the entire scrollbar */
+}
+
+.wrapper::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+  background-color: rgb(185, 185, 185);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid #888;  /* creates padding around scroll thumb */
+}
+
 .home_content {
   width: 100%;
   margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .home_content .welcome_title {
@@ -49,6 +74,7 @@ header .search_bar-container {
   font-size: 1.125rem;
   color: #fff;
   margin-bottom: 0.3125rem;
+  align-self: flex-start;
 }
 
 .divider {
@@ -65,12 +91,39 @@ header .search_bar-container {
   position: relative;
 }
 
+.carousel_container .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  outline: none;
+  border: 2px solid green;
+  background: #0000005e;
+  color: #fff;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.carousel_container .button:hover {
+  background: #00000094;
+}
+.carousel_container .button.prev {
+  left: 0;
+}
+.carousel_container .button.next {
+  right: 0;
+}
+
 .slick-arrow {
   display: none;
 }
 .slick-slide {
   margin-right: 10px;
-  white-space: nowrap;                  
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   color: #fff;
@@ -83,6 +136,11 @@ header .search_bar-container {
 .slick-slide img {
   width: 100%;
   border-radius: 5px;
+}
+.slick-slide img.playlist_cover {
+  width: 6.875rem;
+  height: 6.875rem;
+  border: 50%;
 }
 .slick-slide span {
   font-size: 0.75rem;
@@ -108,4 +166,56 @@ header .search_bar-container {
 #button {
   position: absolute;
   bottom: 0;
+}
+
+.created_playlists_container {
+  width: 100%;
+  margin-bottom: 5.8125rem;
+  overflow: hidden;
+}
+
+.listening_music_container {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.3125rem;
+  position: fixed;
+  bottom: 168px;
+  width: 300px;
+  height: 2.5rem;
+  background-color: #555;
+  border-radius: 7px;
+  z-index: 2;
+}
+
+.listening_music_container .music_info {
+  display: flex;
+  align-items: center;
+}
+
+.listening_music_container .music_info .cover_img-music {
+  width: 2.8125rem;
+  border-radius: 5px;
+}
+
+.listening_music_container .music_info .music_titles {
+  margin-left: 0.625rem;
+}
+.listening_music_container .music_info .music_titles span {
+  display: block;
+  color: #dbdbdb;
+  font-size: 0.75rem;
+  max-width: 9.375rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.listening_music_container .music_info .music_titles span:last-child {
+  color: #bebebe;
+  margin-top: 0.1875rem;
+}
+
+.listening_music_container .play_button {
+  width: 1.875rem;
+  cursor: pointer;
 }
